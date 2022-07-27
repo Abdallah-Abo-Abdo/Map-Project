@@ -1,0 +1,415 @@
+body {
+  background-color: rgb(228, 215, 183);
+  transition: opacity 1s;
+  margin: 0;
+  padding: 0;
+}
+#main-svg {
+  background-image: url("../imgs/GazaMap.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.all-circles circle,
+.all-circles .main-shape {
+  fill: green;
+  stroke: red;
+  stroke-width: 0.1;
+  r: 0.5;
+  transition: 0.6s;
+}
+.all-circles .main-shape {
+  width: 1px;
+  height: 1px;
+}
+.all-circles circle:hover,
+.main-shape:hover {
+  stroke-width: 0.3;
+  cursor: pointer;
+}
+
+.all-lines path {
+  stroke: green;
+  stroke-width: 0.2;
+  transition: 1s;
+  cursor: pointer;
+}
+
+.all-lines path:hover {
+  stroke: red;
+}
+/* ================================================= */
+
+/* Tubes CSS Code */
+
+rect {
+  /* fill: rgb(228, 215, 183); */
+  fill: #d4f1f4;
+}
+
+.rect .rect-lines line {
+  stroke-width: 8;
+  transition: 0.5s;
+}
+.rect .rect-lines line:hover {
+  stroke-width: 12;
+  cursor: pointer;
+}
+
+.rect .shape {
+  /* fill: rgb(105, 155, 105);
+  stroke: red; */
+  fill: #75e6da;
+  stroke: #05445e;
+  stroke-width: 1;
+}
+
+.rect_02 .shape {
+  fill: rgb(180, 190, 180);
+  stroke: red;
+  stroke-width: 1;
+}
+
+.Truns_01 {
+  transition: 2s;
+  transform: scale(1.5, 1.5);
+  opacity: 0;
+}
+
+.Truns_02 {
+  transition: 2s;
+  transform: scale(0, 0);
+  opacity: 0;
+}
+
+/* ================================================= */
+
+/* links CSS Code */
+.rect_02 .rect-lines line {
+  stroke-width: 5;
+  transition: 0.5s;
+}
+/* .rect .rect-lines line:hover {
+  stroke-width: 12;
+  cursor: pointer;
+} */
+
+/* ================================================= */
+.Btn-addcircle {
+  background-color: aqua;
+  transition: 0.5s;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: bold;
+}
+.Btn-addcircle:hover {
+  background-color: green;
+}
+
+/* ================================================= */
+/* JONT CSS Code */
+
+#jont-svg .jont-shape {
+  fill: #d1cbc6;
+  fill-opacity: 0.4;
+  stroke: #023f4a;
+  stroke-width: 1.5;
+  stroke-dasharray: 40;
+  stroke-dashoffset: 800;
+  animation: stroke 5s ease-in-out infinite;
+}
+
+#jont-svg path {
+  stroke-width: 0.3;
+  stroke: #000;
+}
+/*  cable-01 */
+#jont-svg .cable-01 path {
+  fill: transparent;
+  stroke: #151617;
+}
+
+/* #jont-svg .cable-01 .cable-01-t01 path {
+  fill: transparent;
+  stroke: #007af3;
+} */
+
+#jont-svg .cable-02 path {
+  fill: transparent;
+  stroke: rgb(222, 79, 79);
+}
+
+#jont-svg .cable-03 path {
+  fill: transparent;
+  stroke: green;
+}
+
+#jont-svg .cable-04 path {
+  fill: transparent;
+  stroke: blueviolet;
+}
+
+#jont-svg .cable-05 path {
+  fill: transparent;
+  stroke: #0bbcdc;
+}
+
+#jont-svg .cable-06 path {
+  fill: transparent;
+  stroke: rgb(95, 86, 86);
+}
+
+#jont-svg .cable-07 path {
+  fill: transparent;
+  stroke: rgb(180, 3, 109);
+}
+
+#jont-svg .cable-08 path {
+  fill: transparent;
+  stroke: rgb(93, 108, 10);
+}
+#jont-svg .cable-09 path {
+  fill: transparent;
+  stroke: rgb(88, 17, 230);
+}
+
+#jont-svg .cable-10 path {
+  fill: transparent;
+  stroke: rgb(53, 22, 82);
+}
+
+#jont-svg #fb-connetors {
+  fill: none;
+}
+
+#fb-connetors path:hover {
+  stroke: green;
+  stroke-width: 1.1;
+  cursor: cell;
+}
+/* #cir-connetors path {
+  fill: transparent;
+  stroke: green;
+  stroke-width: 0.2;
+  cursor: pointer;
+} */
+/* ================================================= */
+/* Patch CSS Code */
+
+/* ================================================= */
+
+/* Anaimation */
+
+@keyframes stroke {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+/* .inactive-link {
+  filter: drop-shadow(0px -3px 4px rgb(168, 73, 73))
+    drop-shadow(0px 3px 4px rgb(168, 73, 73));
+} */
+.active-link {
+  filter: drop-shadow(0px -3px 4px green) drop-shadow(0px 3px 4px green);
+  /* filter: drop-shadow(3px 3px 5px #000000) drop-shadow(2px 2px 2px #00ff73); */
+
+  /* animation: svg-shadow 1s ease-in-out infinite alternate; */
+}
+
+@keyframes svg-shadow {
+  from {
+    filter: drop-shadow(0px 3px 2px green);
+  }
+
+  to {
+    filter: drop-shadow(0px -3px 2px green);
+  }
+}
+/* ================================================= */
+/* Start Drag Drop Circle */
+/* .interactiveSVG .background {
+  fill: transparent;
+} */
+
+/*  Elements can be points (filled) or lines */
+/* .interactiveSVG .point {
+  stroke: #f8f8f8;
+  stroke-width: 1;
+}
+
+.interactiveSVG .line {
+  fill: none;
+  stroke-width: 0.2;
+} */
+
+/* Color of element determined by role:
+  Orange: draggable, can be dragged directly,
+  Blue: controllable, moved indrectly by draggable elements, 
+  Green: generated, positioned determined by position of other elements
+  Pink: highlight,
+  Grey: static */
+
+/* .interactiveSVG .draggable-point {
+  fill: green;
+  stroke: red;
+  stroke-width: 0.1;
+  r: 3;
+  cursor: pointer;
+}
+
+.interactiveSVG .highlight-point {
+  fill: rgb(255, 0, 175);
+}
+.interactiveSVG .draggable-line {
+  stroke: green;
+  stroke-width: 0.2;
+  cursor: pointer;
+}
+.interactiveSVG .controllable-point {
+  fill: rgb(64, 95, 237);
+  pointer-events: none;
+}
+.interactiveSVG .highlight-line {
+  stroke: rgb(255, 0, 175);
+}
+
+.interactiveSVG .controllable-line {
+  stroke: green;
+  transition: 0.5s;
+} */
+/* new */
+/* .interactiveSVG .controllable-line:hover {
+  stroke: red;
+} */
+
+/* .interactiveSVG .generated-point {
+  fill: rgb(28, 173, 123);
+  pointer-events: none;
+}
+
+.interactiveSVG .static-point {
+  fill: rgb(120, 120, 120);
+  pointer-events: none;
+}
+
+.interactiveSVG .static-line {
+  stroke: rgb(120, 120, 120);
+  stroke-width: 1px;
+  pointer-events: none;
+} */
+
+/* End Drag Drop Circle */
+/* ================================================= */
+
+/* color classes */
+/*1*/
+.blue {
+  stroke: blue;
+}
+/*2*/
+
+.cable-01-t01-sh02 {
+  stroke: orange;
+}
+/*3*/
+
+.green {
+  stroke: green;
+}
+/*4*/
+
+.brown {
+  stroke: brown;
+}
+/*5*/
+
+.gray {
+  stroke: slategray;
+}
+/*6*/
+
+.white {
+  stroke: white;
+}
+/*7*/
+
+.red {
+  stroke: red;
+}
+/*8*/
+
+.black {
+  stroke: black;
+}
+/*9*/
+
+.yellow {
+  stroke: yellow;
+}
+/*10*/
+
+.violet {
+  stroke: violet;
+}
+/*11*/
+
+.pink {
+  stroke: pink;
+}
+/*13*/
+
+.blueviolet {
+  stroke: blueviolet;
+}
+
+#Tubes-page text {
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  fill: green;
+  text-anchor: end;
+}
+
+#tooltip {
+  background: cornsilk;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+/* ================================================= */
+/* on centext menu event */
+/* The whole thing */
+.custom-menu {
+  display: none;
+  z-index: 1000;
+  position: absolute;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  white-space: nowrap;
+  font-family: sans-serif;
+  background: #fff;
+  color: #333;
+  border-radius: 5px;
+  padding: 0;
+}
+
+/* Each of the items in the list */
+.custom-menu li {
+  padding: 8px 12px;
+  cursor: pointer;
+  list-style-type: none;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.custom-menu li:hover {
+  background-color: #def;
+}
+
+/* ================================================= */

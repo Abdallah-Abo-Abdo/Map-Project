@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./CSS/bootstrap.min.css" />
+  <link rel="stylesheet" href="./CSS/all.min.css" />
+  <link rel="stylesheet" href="./CSS/master.css" />
+  <script src="JS/go-debug.js"></script>
+
+  <title>Patch</title>
+</head>
+
+<body style="background-color: rgb(179, 179, 179)">
+  <!-- ==================================================== -->
+  <div class="d-flex justify-content-between align-items-start p-2 m-2">
+    <i class="fa-solid fa-circle-arrow-left" onclick="Truns_02('./index.html')" style="cursor: pointer"
+      data-bs-toggle="tooltip" data-bs-placement="right" title="الرجوع إلى الصفحة الرئيسية"></i>
+    <button id="enable-edits">تعديل</button>
+
+    <button id="Save-edits">حفظ التعديلات</button>
+  </div>
+
+  <div id="myDiagramDiv" style="width: max-width; height: 900px; background-color: #b3b3b3"></div>
+
+  <!-- ==================================================== -->
+  <!-- <script src="main.js"></script> -->
+  <script src="js/patch.js"></script>
+  <script src="JS/jquery-3.6.0.min.js"></script>
+  <script src="./js/sweetalert2.all.min.js"></script>
+
+  <!-- <script src="JS/svg.js"></script> -->
+  <!-- <script src="JS/svg.js"></script>
+    <script src="JS/svg.path.js"></script>
+    <script src="JS/pathseg.min.js"></script> -->
+</body>
+
+</html>

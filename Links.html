@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Links</title>
+  <!-- Main Template CSS File -->
+  <link rel="stylesheet" href="./CSS/bootstrap.min.css" />
+  <link rel="stylesheet" href="./CSS/master.css" />
+  <link rel="stylesheet" href="./CSS/all.min.css" />
+  <link rel="stylesheet" href="MDB-Free_4.20.0/css/mdb.min.css" />
+  <link rel="stylesheet" href="MDB-Free_4.20.0/css/style.css" />
+</head>
+
+<body id="Links-page" style="background-color: #737f81">
+  <div class="Zoom">
+    <div id="tooltip" display="none" style="position: absolute; display: none;"></div>
+
+    <svg viewBox="0 0 1000 470">
+      <g class="rect_02">
+        <rect x="0" y="55" rx="30" width="1000" height="400" style="fill: #b5c2c2; stroke-width: 3" />
+
+        <g class="rect-lines">
+          <line class="active-link" id="line43" x1="0" y1="90" x2="1000" y2="90" stroke="white"
+            onmousemove="showTooltip(evt, 'التبعية : النوع الرابع');" onmouseout="hideTooltip();" />
+          <line class="active-link" id="line44" x1="0" y1="120" x2="1000" y2="120" stroke="blue"
+            onmousemove="showTooltip(evt, 'التبعية : النوع الأول');" onmouseout="hideTooltip();" />
+          <line class="active-link" id="line45" x1="0" y1="150" x2="1000" y2="150" stroke="yellow"
+            onmousemove="showTooltip(evt, 'التبعية : النوع الثاني');" onmouseout="hideTooltip();" />
+          <line class="inactive-link" id="line46" x1="0" y1="180" x2="1000" y2="180" stroke="#187498"
+            onmousemove="showTooltip(evt, 'التبعية : النوع الثالث');" onmouseout="hideTooltip();" />
+          <line class="inactive-link" id="line47" x1="0" y1="210" x2="1000" y2="210" stroke="black"
+            onmousemove="showTooltip(evt, 'التبعية : النوع الأول');" onmouseout="hideTooltip();" />
+          <line class="active-link" id="line48" x1="0" y1="240" x2="1000" y2="240" stroke="white"
+            onmousemove="showTooltip(evt, 'التبعية : النوع الرابع');" onmouseout="hideTooltip();" />
+          <line class="inactive-link" id="line49" x1="0" y1="270" x2="1000" y2="270" stroke="blueviolet"
+            onmousemove="showTooltip(evt, 'التبعية : النوع الأول');" onmouseout="hideTooltip();" />
+          <line class="active-link" id="line50" x1="0" y1="300" x2="1000" y2="300" stroke="brown"
+            onmousemove="showTooltip(evt, 'التبعية : النوع الأول');" onmouseout="hideTooltip();" />
+          <line class="active-link" id="line51" x1="0" y1="330" x2="1000" y2="330" stroke="blue"
+            onmousemove="showTooltip(evt, 'التبعية : النوع الأول');" onmouseout="hideTooltip();" />
+          <line class="active-link" id="line52" x1="0" y1="370" x2="1000" y2="370" stroke="yellow"
+            onmousemove="showTooltip(evt, 'التبعية : النوع الثاني');" onmouseout="hideTooltip();" />
+          <line class="inactive-link" id="line53" x1="0" y1="400" x2="1000" y2="400" stroke="#187498"
+            onmousemove="showTooltip(evt, 'التبعية : النوع الثالث');" onmouseout="hideTooltip();" />
+          <line class="active-link" id="line54" x1="0" y1="430" x2="1000" y2="430" stroke="black"
+            onmousemove="showTooltip(evt, 'التبعية : النوع الأول');" onmouseout="hideTooltip();" />
+
+
+        </g>
+      </g>
+
+      <foreignObject x="50%" y="3%" width="20" height="20">
+        <i class="fa-solid fa-circle-arrow-left" onclick="Truns_02('./Tubes.html')" style="cursor: pointer"
+          data-bs-toggle="tooltip" data-bs-placement="right" title="الرجوع إلى الصفحة الرئيسية"></i>
+      </foreignObject>
+
+      <g id="Link-info">
+        <!-- <foreignObject x="45%" y="430" width="200" height="200">
+          <div class="text-right ">
+            <a href="" class="btn btn-dark-green btn-rounded m-1 p-1 " data-toggle="modal"
+              data-target="#modalContactForm">عرض
+              بيانات الشعرة</a>
+          </div>
+        </foreignObject> -->
+
+        <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">بيانات </h4>
+                <button type="button" class="CloseModal-btn close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body mx-3" dir="rtl">
+                <div class="md-form mb-5">
+                  <input type="text" id="form25" class="form-control validate" value="50" disabled>
+                  <label data-error="wrong" data-success="right" for="form25">الطرف الأول</label>
+                </div>
+
+                <div class="md-form mb-5">
+                  <input type="text" id="form26" class="form-control validate" value=" 20" disabled>
+                  <label data-error="wrong" data-success="right" for="form26">الطرف الثاني </label>
+                </div>
+
+                <div class="md-form mb-5">
+                  <input type="text" id="form27" class="form-control validate" value="A" disabled>
+                  <label data-error="wrong" data-success="right" for="form27"> التبعية </label>
+                </div>
+
+                <div class="md-form mb-5">
+                  <input type="text" id="form28" class="form-control validate" value="النوع الرابع" disabled>
+                  <label data-error="wrong" data-success="right" for="form28">الحالة </label>
+                </div>
+
+                <div class="md-form mb-5">
+                  <input type="text" id="form29" class="form-control validate" value="النوع الرابع" disabled>
+                  <label data-error="wrong" data-success="right" for="form29">المسارات </label>
+                </div>
+
+              </div>
+              <div class="modal-footer d-flex justify-content-center">
+                <button class=" CloseModal-btn btn btn-primary" data-dismiss="modal" aria-label="Close">close
+                  <i class="fas fa-paper-plane-o ml-1"></i>
+
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </g>
+
+
+
+
+    </svg>
+
+  </div>
+
+
+  <!-- Main Template JS File -->
+
+  <script src="./js/bootstrap.bundle.min.js"></script>
+  <script src="./js/all.min.js"></script>
+  <script src="./js/jquery-3.6.0.min.js"></script>
+  <script src="./js/main.js"></script>
+  <script src="./js/sweetalert2.all.min.js"></script>
+  <script src="MDB-Free_4.20.0/js/popper.min.js"></script>
+  <script src="MDB-Free_4.20.0/js/bootstrap.min.js"></script>
+  <script src="MDB-Free_4.20.0/js/mdb.min.js"></script>
+</body>
+
+</html>
