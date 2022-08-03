@@ -108,6 +108,10 @@ rect {
 
 /* ================================================= */
 /* JONT CSS Code */
+/* .all-cables path {
+  fill: none;
+  stroke: none;
+} */
 
 #jont-svg .jont-shape {
   fill: #d1cbc6;
@@ -120,8 +124,9 @@ rect {
 }
 
 #jont-svg path {
-  stroke-width: 0.3;
-  stroke: #000;
+  /* stroke-width: 0.3; */
+  /* stroke: #000; */
+  fill: transparent;
 }
 /*  cable-01 */
 #jont-svg .cable-01 path {
@@ -385,7 +390,8 @@ rect {
 /* ================================================= */
 /* on centext menu event */
 /* The whole thing */
-.custom-menu {
+.custom-menu,
+.custom-menu-2 {
   display: none;
   z-index: 1000;
   position: absolute;
@@ -400,7 +406,8 @@ rect {
 }
 
 /* Each of the items in the list */
-.custom-menu li {
+.custom-menu li,
+.custom-menu-2 li {
   padding: 8px 12px;
   cursor: pointer;
   list-style-type: none;
@@ -408,7 +415,8 @@ rect {
   user-select: none;
 }
 
-.custom-menu li:hover {
+.custom-menu li:hover,
+.custom-menu-2 li:hover {
   background-color: #def;
 }
 

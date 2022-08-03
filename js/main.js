@@ -74,10 +74,10 @@ jQuery(document).ready(function () {
 
   // (Jont - page) >>> ;
   if (document.getElementById("Jont-page")) {
-    link_Connection($(".cable-01-t01-sh04"), $(".cable-04-t12-sh12"));
-    link_Connection($(".cable-01-t08-sh05"), $(".cable-04-t01-sh12"));
-    link_Connection($(".cable-04-t01-sh01"), $(".cable-07-t05-sh12"));
-    link_Connection($(".cable-07-t12-sh01"), $(".cable-03-t02-sh01"));
+    // link_Connection($(".cable-01-t01-sh04"), $(".cable-04-t12-sh12"));
+    // link_Connection($(".cable-01-t08-sh05"), $(".cable-04-t01-sh12"));
+    // link_Connection($(".cable-04-t01-sh01"), $(".cable-07-t05-sh12"));
+    // link_Connection($(".cable-07-t12-sh01"), $(".cable-03-t02-sh01"));
 
     jQuery("#Edit-jontinfo").click(function () {
       $("#form10,#form11,#form12,#form13,#form14,#form15").removeAttr(
@@ -114,6 +114,7 @@ jQuery(document).ready(function () {
 
   // $(".New-circles").html('<circle cx="100" cy="50"/>');
   //==========================================================================
+  // Delete Menu
   // Trigger action when the contexmenu is about to be shown
   $(".all-lines path , .all-circles circle , .all-circles .main-shape").bind(
     "contextmenu",
@@ -130,6 +131,11 @@ jQuery(document).ready(function () {
           top: event.pageY + "px",
           left: event.pageX + "px",
         });
+
+      console.log(
+        "user clicked: ",
+        event.target.getAttribute("class") || event.target.getAttribute("id")
+      );
     }
   );
 
@@ -174,16 +180,100 @@ jQuery(document).ready(function () {
           }
         });
         break;
-      // case "second":
-      //   alert("second");
-      //   break;
-      // case "third":
-      //   alert("third");
-      //   break;
     }
 
     // Hide it AFTER the action was triggered
     $(".custom-menu").hide(300);
+  });
+
+  //==========================================================================
+  // Add Menu
+  // Trigger action when the contexmenu is about to be shown
+  $("#Btn-addcircle").bind("click", function (event) {
+    // Avoid the real one
+    event.preventDefault();
+
+    // Show contextmenu
+    $(".custom-menu-2")
+      .finish()
+      .toggle(100)
+      // In the right position (the mouse)
+      .css({
+        top: event.pageY + "px",
+        left: event.pageX + "px",
+      });
+  });
+
+  // If the document is clicked somewhere
+  $(document).bind("mousedown", function (e) {
+    // If the clicked element is not the menu
+    if (!$(e.target).parents(".custom-menu-2").length > 0) {
+      // Hide it
+      $(".custom-menu-2").hide(100);
+    }
+  });
+
+  // If the menu element is clicked
+  $(".custom-menu-2 li").click(function () {
+    // This is the triggered action name
+    switch ($(this).attr("data-action")) {
+      // A case for each action. Your actions here
+
+      case "second":
+        Swal.fire({
+          title: "حدد إحداثيات المنطقة المراد إضافتها",
+          showCancelButton: true,
+          confirmButtonText: "OK",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            let eleSvg = document.getElementById("main-svg");
+            eleSvg.addEventListener(
+              "dblclick",
+              function coordinates({ clientX, clientY }) {
+                let point = eleSvg.createSVGPoint();
+                point.x = clientX; // 282
+                point.y = clientY; // 226
+                point = point.matrixTransform(eleSvg.getScreenCTM().inverse());
+                // console.log(point);
+                console.log(`pointX = ${point.x}`);
+                console.log(`pointY = ${point.y}`);
+                // point = (1050, 407)
+                eleSvg.removeEventListener("dblclick", coordinates);
+              }
+            );
+          }
+        });
+        break;
+      case "third":
+        Swal.fire({
+          title: "حدد إحداثيات المنطقة المراد إضافتها",
+          showCancelButton: true,
+          confirmButtonText: "OK",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            let eleSvg = document.getElementById("main-svg");
+            eleSvg.addEventListener(
+              "dblclick",
+              function coordinates({ clientX, clientY }) {
+                let point = eleSvg.createSVGPoint();
+                point.x = clientX; // 282
+                point.y = clientY; // 226
+                point = point.matrixTransform(eleSvg.getScreenCTM().inverse());
+                // console.log(point);
+                console.log(`pointX = ${point.x}`);
+                console.log(`pointY = ${point.y}`);
+                // point = (1050, 407)
+                eleSvg.removeEventListener("dblclick", coordinates);
+              }
+            );
+            // eleSvg.addEventListener("dblclick", ({ clientX, clientY }) => {});
+          }
+        });
+        break;
+    }
+
+    // Hide it AFTER the action was triggered
+    $(".custom-menu-2").hide(300);
   });
 
   //==========================================================================
@@ -319,35 +409,6 @@ function ScrollZoom(container, max_scale, factor) {
         $(".all-lines").show(200);
       }
     }, 500);
-
-    // function To get x and y coordinates on mouse click
-    // function printMousePos(event) {
-    //   console.log(`clientX = ${event.clientX}`);
-    //   console.log(`clientY = ${event.clientY}`);
-    // }
-
-    let addCircleBTN = document.getElementById("Btn-addcircle");
-    addCircleBTN.addEventListener("click", function () {
-      Swal.fire({
-        title: "Choose circle location",
-        showCancelButton: true,
-        confirmButtonText: "OK",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          let eleSvg = document.getElementById("main-svg");
-          eleSvg.addEventListener("dblclick", ({ clientX, clientY }) => {
-            let point = eleSvg.createSVGPoint();
-            point.x = clientX; // 282
-            point.y = clientY; // 226
-            point = point.matrixTransform(eleSvg.getScreenCTM().inverse());
-            // console.log(point);
-            console.log(`pointX = ${point.x}`);
-            console.log(`pointY = ${point.y}`);
-            // point = (1050, 407)
-          });
-        }
-      });
-    });
   }
 }
 
@@ -413,7 +474,8 @@ function circles_Connection(c1, c2) {
     .L({
       x: x2,
       y: y2,
-    });
+    })
+    .attr("id", "newId");
 }
 
 // ============================================================================
@@ -453,3 +515,374 @@ function hideTooltip() {
   tooltip.style.display = "none";
 }
 // ============================================================================
+var cables = [
+  {
+    name: "cable 1",
+    tubes: [
+      {
+        color: "white",
+        hairs: [
+          {
+            color: "blue",
+          },
+          {
+            color: "gorge",
+          },
+        ],
+      },
+    ],
+  },
+
+  {
+    name: "cable 1",
+    tubes: [
+      {
+        color: "white",
+        hairs: [
+          {
+            color: "blue",
+          },
+          {
+            color: "gorge",
+          },
+          {
+            color: "blue",
+          },
+          {
+            color: "gorge",
+          },
+          {
+            color: "blue",
+          },
+          {
+            color: "gorge",
+          },
+          {
+            color: "blue",
+          },
+          {
+            color: "gorge",
+          },
+          {
+            color: "blue",
+          },
+          {
+            color: "gorge",
+          },
+          {
+            color: "blue",
+          },
+          {
+            color: "gorge",
+          },
+        ],
+      },
+      {
+        color: "white",
+        hairs: [
+          {
+            color: "blue",
+          },
+          {
+            color: "gorge",
+          },
+        ],
+      },
+      {
+        color: "white",
+        hairs: [
+          {
+            color: "blue",
+          },
+          {
+            color: "gorge",
+          },
+        ],
+      },
+      {
+        color: "white",
+        hairs: [
+          {
+            color: "blue",
+          },
+          {
+            color: "gorge",
+          },
+        ],
+      },
+      {
+        color: "white",
+        hairs: [
+          {
+            color: "blue",
+          },
+          {
+            color: "gorge",
+          },
+        ],
+      },
+    ],
+  },
+];
+// ============================================================================
+if (document.getElementById("Jont-page")) {
+  // Start  Bottom Cables
+  var cord_x = 200;
+  var cord_y = 430;
+  var k = 6;
+
+  cables.forEach((cable, index) => {
+    cord_x = (index + 1) * 200;
+
+    // open borders for cable
+    SVG(document.querySelector(".all-cables"))
+      .path()
+      .M({
+        x: cord_x,
+        y: cord_y,
+      })
+      .v(200)
+      .attr("id", "StartCable")
+      .attr("stroke", "black")
+      .attr("stroke-width", "1");
+
+    // tubes
+    cable.tubes.forEach((tube, index1) => {
+      SVG(document.querySelector(".all-cables"))
+        .path()
+        .M({
+          x: cord_x + (index1 + 0.1) * 15,
+          y: cord_y + 5,
+        })
+        .h(13)
+        .v(200)
+        .h(-13)
+        .v(-200)
+        .attr("id", "tube")
+        .attr("stroke", "red")
+        .attr("stroke-width", "0.4");
+      // hairs
+      tube.hairs.forEach((hair, index2) => {
+        SVG(document.querySelector(".all-cables"))
+          .path()
+          .M({
+            x: cord_x + (index2 * 0.054 + 0.1) * 20,
+            y: cord_y + 7,
+          })
+          .v(200)
+          .attr("id", "hair")
+          .attr("stroke", "blue")
+          .attr("stroke-width", "0.3");
+      });
+    });
+
+    // close borders for cable
+    SVG(document.querySelector(".all-cables"))
+      .path()
+      .M({
+        x: cord_x + (cable.tubes.length + 0.1) * 15 + 0.1,
+        y: cord_y,
+      })
+      .v(200)
+      .attr("id", "EndCable")
+      .attr("stroke", "black")
+      .attr("stroke-width", "1");
+  });
+  // End  Bottom Cables
+
+  // ============================================================================
+  // Start TOP Cables
+
+  var cord_x = 200;
+  var cord_y = 40;
+  var k = 6;
+
+  cables.forEach((cable, index) => {
+    cord_x = (index + 1) * 200;
+    // open borders for cable
+    SVG(document.querySelector(".all-cables"))
+      .path()
+      .M({
+        x: cord_x,
+        y: cord_y,
+      })
+      .v(-100)
+      .attr("id", "startcable")
+      .attr("stroke", "black")
+      .attr("stroke-width", "1");
+
+    // tubes
+    cable.tubes.forEach((tube, index1) => {
+      SVG(document.querySelector(".all-cables"))
+        .path()
+        .M({
+          x: cord_x + (index1 + 0.1) * 15,
+          y: cord_y - 5,
+        })
+        .h(13)
+        .v(-100)
+        .h(-13)
+        .v(100)
+        .attr("id", "tube")
+        .attr("stroke", "red")
+        .attr("stroke-width", "0.4");
+
+      // hairs
+      tube.hairs.forEach((hair, index2) => {
+        SVG(document.querySelector(".all-cables"))
+          .path()
+          .M({
+            x: cord_x + (index2 * 0.054 + 0.1) * 20,
+            y: cord_y - 7,
+          })
+          .v(-100)
+          .attr("id", "hair")
+          .attr("stroke", "blue")
+          .attr("stroke-width", "0.3");
+      });
+    });
+
+    // close borders for cable
+    SVG(document.querySelector(".all-cables"))
+      .path()
+      .M({
+        x: cord_x + (cable.tubes.length + 0.1) * 15 + 0.1,
+        y: cord_y,
+      })
+      .v(-100)
+      .attr("id", "EndCable")
+      .attr("stroke", "black")
+      .attr("stroke-width", "1");
+  });
+  // End TOP Cables
+
+  // ============================================================================
+  // Start Right Cables
+
+  var right_cord_x = 810;
+  var right_cord_y = 50;
+  var k = 6;
+
+  cables.forEach((cable, index) => {
+    right_cord_y = (index + 1) * 50;
+    // open borders for cable
+    SVG(document.querySelector(".all-cables"))
+      .path()
+      .M({
+        x: right_cord_x,
+        y: right_cord_y,
+      })
+      .h(300)
+      .attr("id", "startcable")
+      .attr("stroke", "black")
+      .attr("stroke-width", "1");
+
+    // tubes
+    cable.tubes.forEach((tube, index1) => {
+      SVG(document.querySelector(".all-cables"))
+        .path()
+        .M({
+          x: right_cord_x + 5,
+          y: right_cord_y + (index1 + 0.1) * 15,
+        })
+        .v(13)
+        .h(300)
+        .v(-13)
+        .h(-300)
+        .attr("id", "tube")
+        .attr("stroke", "red")
+        .attr("stroke-width", "0.4");
+
+      // hairs
+      tube.hairs.forEach((hair, index2) => {
+        SVG(document.querySelector(".all-cables"))
+          .path()
+          .M({
+            x: right_cord_x + 7,
+            y: right_cord_y + (index2 * 0.054 + 0.1) * 20,
+          })
+          .h(300)
+          .attr("id", "hair")
+          .attr("stroke", "blue")
+          .attr("stroke-width", "0.3");
+      });
+    });
+    // close borders for cable
+    SVG(document.querySelector(".all-cables"))
+      .path()
+      .M({
+        x: right_cord_x,
+        y: right_cord_y + (cable.tubes.length + 0.1) * 15 + 0.1,
+      })
+      .h(300)
+      .attr("id", "endcable")
+      .attr("stroke", "black")
+      .attr("stroke-width", "1");
+  });
+  // End Right Cables
+
+  // ============================================================================
+  // Satrt Left Cables
+  var Left_cord_x = 170;
+  var Left_cord_y = 50;
+  var k = 6;
+
+  cables.forEach((cable, index) => {
+    Left_cord_y = (index + 1) * 50;
+    // open borders for cable
+    SVG(document.querySelector(".all-cables"))
+      .path()
+      .M({
+        x: Left_cord_x,
+        y: Left_cord_y,
+      })
+      .h(-300)
+      .attr("id", "startcable")
+      .attr("stroke", "black")
+      .attr("stroke-width", "1");
+
+    // tubes
+    cable.tubes.forEach((tube, index1) => {
+      SVG(document.querySelector(".all-cables"))
+        .path()
+        .M({
+          x: Left_cord_x - 5,
+          y: Left_cord_y + (index1 + 0.1) * 15,
+        })
+        .v(13)
+        .h(-300)
+        .v(-13)
+        .h(300)
+        .attr("id", "tube")
+        .attr("stroke", "red")
+        .attr("stroke-width", "0.4");
+
+      // hairs
+      tube.hairs.forEach((hair, index2) => {
+        SVG(document.querySelector(".all-cables"))
+          .path()
+          .M({
+            x: Left_cord_x - 7,
+            y: Left_cord_y + (index2 * 0.054 + 0.1) * 20,
+          })
+          .h(-300)
+          .attr("id", "hair")
+          .attr("stroke", "blue")
+          .attr("stroke-width", "0.3");
+      });
+    });
+    // close borders for cable
+    SVG(document.querySelector(".all-cables"))
+      .path()
+      .M({
+        x: Left_cord_x,
+        y: Left_cord_y + (cable.tubes.length + 0.1) * 15 + 0.1,
+      })
+      .h(-300)
+      .attr("id", "endcable")
+      .attr("stroke", "black")
+      .attr("stroke-width", "1");
+  });
+  // End Left Cables
+  // ============================================================================
+}
