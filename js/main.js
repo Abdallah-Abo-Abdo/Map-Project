@@ -1,4 +1,4 @@
-// // print the element the user clicked in the Console
+// print the element the user clicked in the Console
 // document.addEventListener("click", function handleClickOutsideBox(event) {
 //   console.log("user clicked: ", event.target);
 // });
@@ -267,6 +267,58 @@ jQuery(document).ready(function () {
               }
             );
             // eleSvg.addEventListener("dblclick", ({ clientX, clientY }) => {});
+          }
+        });
+        break;
+      case "fourth":
+        Swal.fire({
+          title: "يرجى تحديد المنطقة الأولى",
+          showCancelButton: true,
+          confirmButtonText: "OK",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            jQuery(
+              ".all-circles circle ,.all-circles .main-shape ,.all-lines path "
+            ).off("click");
+            jQuery(".all-circles circle ,.all-circles .main-shape").click(
+              function (evt) {
+                console.log(
+                  "user clicked: ",
+                  evt.target.getAttribute("class", "id")
+                );
+
+                Swal.fire({
+                  // title: "تم تحديد المنطقة الأولى \n يرجى تحديد المنطقة الثانية ",
+                  title: "يرجى تحديد المنطقة الثانية ",
+                  showCancelButton: true,
+                  confirmButtonText: "OK",
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    jQuery(
+                      ".all-circles circle ,.all-circles .main-shape ,.all-lines path"
+                    ).off("click");
+                    jQuery(
+                      ".all-circles circle ,.all-circles .main-shape"
+                    ).click(function (evt) {
+                      console.log(
+                        "user clicked: ",
+                        evt.target.getAttribute("class", "id")
+                      );
+                      Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "تم  ",
+                        showConfirmButton: false,
+                        timer: 1500,
+                      });
+                      jQuery(
+                        ".all-circles circle ,.all-circles .main-shape ,.all-lines path"
+                      ).off("click");
+                    });
+                  }
+                });
+              }
+            );
           }
         });
         break;
