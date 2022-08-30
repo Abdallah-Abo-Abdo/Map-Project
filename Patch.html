@@ -1,40 +1,342 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./CSS/bootstrap.min.css" />
-  <link rel="stylesheet" href="./CSS/all.min.css" />
-  <link rel="stylesheet" href="./CSS/master.css" />
-  <script src="JS/go-debug.js"></script>
-
-  <title>Patch</title>
+    <link rel="stylesheet" href="./CSS/bootstrap.min.css" />
+    <link rel="stylesheet" href="./CSS/all.min.css" />
+    <link rel="stylesheet" href="dataTables.css" />
+    <link rel="stylesheet" href="dataTables.min.css" />
+    <!-- <link rel="stylesheet" href="https://editor.datatables.net/extensions/Editor/css/editor.dataTables.min.css" /> -->
 </head>
 
-<body style="background-color: rgb(179, 179, 179)">
-  <!-- ==================================================== -->
-  <div class="d-flex justify-content-between align-items-start p-2 m-2">
-    <i class="fa-solid fa-circle-arrow-left" onclick="Truns_02('./index.html')" style="cursor: pointer"
-      data-bs-toggle="tooltip" data-bs-placement="right" title="الرجوع إلى الصفحة الرئيسية"></i>
-    <button id="enable-edits">تعديل</button>
+<body>
+    <style>
+        body {
+            padding: 10px;
+            margin: 10px;
+        }
 
-    <button id="Save-edits">حفظ التعديلات</button>
-  </div>
+        table.dataTable thead th,
+        table.dataTable tfoot th {
+            text-align: center;
+        }
 
-  <div id="myDiagramDiv" style="width: max-width; height: 900px; background-color: #b3b3b3"></div>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
 
-  <!-- ==================================================== -->
-  <!-- <script src="main.js"></script> -->
-  <script src="js/patch.js"></script>
-  <script src="JS/jquery-3.6.0.min.js"></script>
-  <script src="./js/sweetalert2.all.min.js"></script>
+        td,
+        th {
+            border: 2px solid #dddddd;
+            text-align: center;
+            padding: 8px;
+        }
 
-  <!-- <script src="JS/svg.js"></script> -->
-  <!-- <script src="JS/svg.js"></script>
-    <script src="JS/svg.path.js"></script>
-    <script src="JS/pathseg.min.js"></script> -->
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+
+    <table id="example" class="table table-striped table-bordered dataTable" cellspacing="0" width="100%" role="grid"
+        aria-describedby="example_info" style="width: 100%" dir="rtl">
+        <thead>
+            <tr role="row">
+                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"
+                    aria-label="Name: activate to sort column ascending" style="width: 137px">
+                    إسم الباتش
+                </th>
+                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"
+                    aria-label="Position: activate to sort column ascending" style="width: 215px">
+                    رقم البورت
+                </th>
+                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"
+                    aria-label="Office: activate to sort column ascending" style="width: 100px">
+                    المدخلات
+                </th>
+                <th class="sorting_desc" tabindex="0" aria-controls="example" rowspan="1" colspan="1"
+                    aria-label="Age: activate to sort column ascending" aria-sort="descending" style="width: 44px">
+                    المخرجات
+                </th>
+                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"
+                    aria-label="Start date: activate to sort column ascending" style="width: 5px"></th>
+            </tr>
+        </thead>
+
+        <tfoot>
+            <tr>
+                <th rowspan="1" colspan="1">إسم الباتش</th>
+                <th rowspan="1" colspan="1">رقم البورت</th>
+                <th rowspan="1" colspan="1">المدخلات</th>
+                <th rowspan="1" colspan="1">المخرجات</th>
+                <th rowspan="1" colspan="1"></th>
+            </tr>
+        </tfoot>
+
+        <tbody>
+            <tr role="row" class="odd">
+                <td class="">باتش 1</td>
+                <td>بورت 1</td>
+                <td>شعرة</td>
+                <td class="sorting_1">A</td>
+                <td style="display: flex; justify-content: space-evenly">
+                    <i class="fa-solid fa-pen"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+
+            <tr role="row" class="even">
+                <td class="">باتش 2</td>
+                <td>بورت 2</td>
+                <td>جمبر</td>
+                <td class="sorting_1">B</td>
+                <td style="display: flex; justify-content: space-evenly">
+                    <i class="fa-solid fa-pen"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+
+            <tr role="row" class="odd">
+                <td class="">باتش 1</td>
+                <td>بورت 1</td>
+                <td>شعرة</td>
+                <td class="sorting_1">A</td>
+                <td style="display: flex; justify-content: space-evenly">
+                    <i class="fa-solid fa-pen"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr role="row" class="even">
+                <td class="">باتش 4</td>
+                <td>بورت 4</td>
+                <td>شعرة</td>
+                <td class="sorting_1">D</td>
+                <td style="display: flex; justify-content: space-evenly">
+                    <i class="fa-solid fa-pen"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr role="row" class="odd">
+                <td class="">باتش 1</td>
+                <td>بورت 1</td>
+                <td>شعرة</td>
+                <td class="sorting_1">A</td>
+                <td style="display: flex; justify-content: space-evenly">
+                    <i class="fa-solid fa-pen"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr role="row" class="even">
+                <td class="">باتش 3</td>
+                <td>بورت 2</td>
+                <td>شعرة</td>
+                <td class="sorting_1">C</td>
+                <td style="display: flex; justify-content: space-evenly">
+                    <i class="fa-solid fa-pen"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr role="row" class="odd">
+                <td class="">باتش 1</td>
+                <td>بورت 1</td>
+                <td>شعرة</td>
+                <td class="sorting_1">A</td>
+                <td style="display: flex; justify-content: space-evenly">
+                    <i class="fa-solid fa-pen"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr role="row" class="even">
+                <td class="">باتش 3</td>
+                <td>بورت 2</td>
+                <td>شعرة</td>
+                <td class="sorting_1">C</td>
+                <td style="display: flex; justify-content: space-evenly">
+                    <i class="fa-solid fa-pen"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr role="row" class="odd">
+                <td class="">باتش 1</td>
+                <td>بورت 1</td>
+                <td>شعرة</td>
+                <td class="sorting_1">A</td>
+                <td style="display: flex; justify-content: space-evenly">
+                    <i class="fa-solid fa-pen"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr role="row" class="even">
+                <td class="">باتش 3</td>
+                <td>بورت 2</td>
+                <td>شعرة</td>
+                <td class="sorting_1">C</td>
+                <td style="display: flex; justify-content: space-evenly">
+                    <i class="fa-solid fa-pen"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr role="row" class="even">
+                <td class="">باتش 3</td>
+                <td>بورت 2</td>
+                <td>شعرة</td>
+                <td class="sorting_1">C</td>
+                <td style="display: flex; justify-content: space-evenly">
+                    <i class="fa-solid fa-pen"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr role="row" class="odd">
+                <td class="">باتش 1</td>
+                <td>بورت 1</td>
+                <td>شعرة</td>
+                <td class="sorting_1">A</td>
+                <td style="display: flex; justify-content: space-evenly">
+                    <i class="fa-solid fa-pen"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr role="row" class="even">
+                <td class="">باتش 3</td>
+                <td>بورت 2</td>
+                <td>شعرة</td>
+                <td class="sorting_1">C</td>
+                <td style="display: flex; justify-content: space-evenly">
+                    <i class="fa-solid fa-pen"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr role="row" class="odd">
+                <td class="">باتش 1</td>
+                <td>بورت 1</td>
+                <td>شعرة</td>
+                <td class="sorting_1">A</td>
+                <td style="display: flex; justify-content: space-evenly">
+                    <i class="fa-solid fa-pen"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr role="row" class="even">
+                <td class="">باتش 3</td>
+                <td>بورت 2</td>
+                <td>شعرة</td>
+                <td class="sorting_1">C</td>
+                <td style="display: flex; justify-content: space-evenly">
+                    <i class="fa-solid fa-pen"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr role="row" class="even">
+                <td class="">باتش 3</td>
+                <td>بورت 2</td>
+                <td>شعرة</td>
+                <td class="sorting_1">C</td>
+                <td style="display: flex; justify-content: space-evenly">
+                    <i class="fa-solid fa-pen"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr role="row" class="odd">
+                <td class="">باتش 1</td>
+                <td>بورت 1</td>
+                <td>شعرة</td>
+                <td class="sorting_1">A</td>
+                <td style="display: flex; justify-content: space-evenly">
+                    <i class="fa-solid fa-pen"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr role="row" class="even">
+                <td class="">باتش 3</td>
+                <td>بورت 2</td>
+                <td>شعرة</td>
+                <td class="sorting_1">C</td>
+                <td style="display: flex; justify-content: space-evenly">
+                    <i class="fa-solid fa-pen"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr role="row" class="odd">
+                <td class="">باتش 1</td>
+                <td>بورت 1</td>
+                <td>شعرة</td>
+                <td class="sorting_1">A</td>
+                <td style="display: flex; justify-content: space-evenly">
+                    <i class="fa-solid fa-pen"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr role="row" class="even">
+                <td class="">باتش 3</td>
+                <td>بورت 2</td>
+                <td>شعرة</td>
+                <td class="sorting_1">C</td>
+                <td style="display: flex; justify-content: space-evenly">
+                    <i class="fa-solid fa-pen"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr role="row" class="even">
+                <td class="">باتش 3</td>
+                <td>بورت 2</td>
+                <td>شعرة</td>
+                <td class="sorting_1">C</td>
+                <td style="display: flex; justify-content: space-evenly">
+                    <i class="fa-solid fa-pen"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr role="row" class="odd">
+                <td class="">باتش 1</td>
+                <td>بورت 1</td>
+                <td>شعرة</td>
+                <td class="sorting_1">A</td>
+                <td style="display: flex; justify-content: space-evenly">
+                    <i class="fa-solid fa-pen"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr role="row" class="even">
+                <td class="">باتش 3</td>
+                <td>بورت 2</td>
+                <td>شعرة</td>
+                <td class="sorting_1">C</td>
+                <td style="display: flex; justify-content: space-evenly">
+                    <i class="fa-solid fa-pen"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr role="row" class="odd">
+                <td class="">باتش 1</td>
+                <td>بورت 1</td>
+                <td>شعرة</td>
+                <td class="sorting_1">A</td>
+                <td style="display: flex; justify-content: space-evenly">
+                    <i class="fa-solid fa-pen"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+            <tr role="row" class="even">
+                <td class="">باتش 3</td>
+                <td>بورت 2</td>
+                <td>شعرة</td>
+                <td class="sorting_1">C</td>
+                <td style="display: flex; justify-content: space-evenly">
+                    <i class="fa-solid fa-pen"></i>
+                    <i class="fa-solid fa-trash"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#example").DataTable();
+        });
+    </script>
 </body>
 
 </html>

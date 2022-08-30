@@ -89,10 +89,10 @@ rect {
   stroke-width: 5;
   transition: 0.5s;
 }
-/* .rect .rect-lines line:hover {
-  stroke-width: 12;
+.rect_02 .rect-lines line:hover {
+  stroke-width: 10;
   cursor: pointer;
-} */
+}
 
 /* ================================================= */
 .Btn-addcircle {
@@ -108,10 +108,14 @@ rect {
 
 /* ================================================= */
 /* JONT CSS Code */
-/* .all-cables path {
-  fill: none;
-  stroke: none;
-} */
+.all-cables #hair {
+  transition: 0.3s;
+}
+.all-cables #hair:hover {
+  stroke-width: 0.8;
+  /* fill: none;
+  stroke: none; */
+}
 
 #jont-svg .jont-shape {
   fill: #d1cbc6;
@@ -391,7 +395,8 @@ rect {
 /* on centext menu event */
 /* The whole thing */
 .custom-menu,
-.custom-menu-2 {
+.custom-menu-2,
+.custom-menu-3 {
   display: none;
   z-index: 1000;
   position: absolute;
@@ -407,7 +412,8 @@ rect {
 
 /* Each of the items in the list */
 .custom-menu li,
-.custom-menu-2 li {
+.custom-menu-2 li,
+.custom-menu-3 li {
   padding: 8px 12px;
   cursor: pointer;
   list-style-type: none;
@@ -416,7 +422,8 @@ rect {
 }
 
 .custom-menu li:hover,
-.custom-menu-2 li:hover {
+.custom-menu-2 li:hover,
+.custom-menu-3 li:hover {
   background-color: #def;
 }
 

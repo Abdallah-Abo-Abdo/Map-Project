@@ -17,7 +17,7 @@
 <body id="Jont-page" style="background-color: #d4f1f4">
   <div class="Zoom">
     <svg id="jont-svg" viewBox="0 0 1000 490">
-      <foreignObject id="foreign" x="3%" y="0.5%" width="20" height="20">
+      <foreignObject id="foreign" x="10%" y="0.5%" width="20" height="20">
         <i class="fa-solid fa-circle-arrow-left" onclick="Truns_02('./index.html')" style="cursor: pointer"
           data-bs-toggle="tooltip" data-bs-placement="right" title="الرجوع إلى الصفحة الرئيسية"></i>
       </foreignObject>
@@ -26,94 +26,24 @@
         <rect x="150" y="30" rx="30" width="680" height="410" style="fill: rgb(132, 132, 146)" />
       </g>
       <!-- ============================================================================= -->
-      <g class="all-cables" style="cursor: pointer" onclick="Truns_02('./Tubes.html')">
-
+      <g class="all-cables" style="cursor: pointer">
+        <path class="cable-04-t01-sh01" d="M740,24 h350  z" style="stroke: blue" />
+        <path class="cable-06-t09-sh03" d="M600,50 v-100  z" style="stroke: green" />
       </g>
       <!-- ============================================================================= -->
       <!-- start Connectors-between-cables -->
 
       <g id="fb-connetors" class="active-link"></g>
 
-      <!-- <g id="jont-info">
-        <foreignObject x="800" y="420" width="200" height="200">
-          <div class="text-right ">
-            <a href="" class="btn btn-default btn-rounded m-1 p-1 " data-toggle="modal"
-              data-target="#modalContactForm">عرض
-              بيانات الدائرة</a>
-          </div>
+      <g id="Btn-addConnection">
+        <foreignObject x="10" y="5" width="30" height="30">
+          <button class="Btn-addcircle" type="button">+</button>
         </foreignObject>
+      </g>
 
-        <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-          aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header text-center">
-                <h4 class="modal-title w-100 font-weight-bold">بيانات الدائرة</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body mx-3" dir="rtl">
-                <div class="md-form mb-5">
-                  <input type="text" id="form10" class="form-control validate" value="A" disabled>
-                  <label data-error="wrong" data-success="right" for="form34">اسم المكان</label>
-                </div>
-
-                <div class="md-form mb-5">
-                  <input type="text" id="form11" class="form-control validate" value="النوع الأول" disabled>
-                  <label data-error="wrong" data-success="right" for="form29">نوع المكان</label>
-                </div>
-
-                <div class="md-form mb-5">
-                  <input type="text" id="form12" class="form-control validate" value="غزة" disabled>
-                  <label data-error="wrong" data-success="right" for="form29"> اسم المدينة</label>
-                </div>
-
-                <div class="md-form mb-5">
-                  <input type="text" id="form13" class="form-control validate" value="5" disabled>
-                  <label data-error="wrong" data-success="right" for="form29">عدد الطبقات</label>
-                </div>
-
-                <div class="md-form mb-5">
-                  <input type="text" id="form14" class="form-control validate" value="7" disabled>
-                  <label data-error="wrong" data-success="right" for="form29">عدد المنافذ</label>
-                </div>
-
-                <div class="md-form mb-5">
-                  <input type="text" id="form15" class="form-control validate" value="النوع الرابع" disabled>
-                  <label data-error="wrong" data-success="right" for="form29">نوع الحاوية</label>
-                </div>
-
-                <div class="md-form">
-                  <textarea type="text" id="form16" class="md-textarea form-control" rows="4"></textarea>
-                  <label data-error="wrong" data-success="right" for="form8">تفاصيل أخرى</label>
-                </div>
-
-                <div class="modal-footer d-flex justify-content-center">
-                  <button id="work-tasks-btn" class="btn btn-blue">عرض مهام العمل
-                    <i class="fas fa-paper-plane-o ml-1"></i>
-                  </button>
-
-                </div>
-
-
-
-              </div>
-              <div class="modal-footer d-flex justify-content-center">
-                <button id="Edit-jontinfo" class="btn btn-primary">Edit
-                  <i class="fas fa-paper-plane-o ml-1"></i>
-                </button>
-                <button id="send-jontinfo" class="btn btn-green" style="display: none;">send
-                  <i class="fas fa-paper-plane-o ml-1"></i>
-                </button>
-              </div>
-
-
-            </div>
-          </div>
-        </div>
-      </g> -->
-
+      <ul class='custom-menu-3'>
+        <li data-action="fifth"> <i class="fa-solid fa-rotate-left"></i> إضافة إتصال </li>
+      </ul>
     </svg>
 
   </div>

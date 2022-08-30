@@ -37,44 +37,20 @@ jQuery(document).ready(function () {
   });
 
   jQuery(".all-circles .main-shape").click(function () {
-    Truns_01("./Patch.html");
+    Truns_01("./patch.html");
   });
-  // jQuery(".rect .shape").click(function () {
-  //   Truns_02("./index.html");
-  // });
 
   jQuery(".rect .rect-lines").click(function () {
     Truns_01("./Links.html");
   });
 
-  jQuery(".R-circles").click(function () {
-    $(".K-circles , .M-circles , .G-circles ,  .N-circles").fadeToggle(1000);
-    $(".K-lines , .M-lines , .G-lines ,  .N-lines ,.R-K").fadeToggle(1000);
-  });
-
-  jQuery(".K-circles").click(function () {
-    $(".R-circles , .M-circles , .G-circles ,  .N-circles").fadeToggle(1000);
-    jQuery(".R-lines , .M-lines , .G-lines ,  .N-lines ,.K-M").fadeToggle(1000);
-  });
-
-  jQuery(".M-circles").click(function () {
-    $(".R-circles , .K-circles , .G-circles ,  .N-circles").fadeToggle(1000);
-    $(".R-lines , .K-lines , .G-lines ,  .N-lines ,.M-G").fadeToggle(1000);
-  });
-
-  jQuery(".G-circles").click(function () {
-    $(".R-circles , .K-circles , .M-circles ,  .N-circles").fadeToggle(1000);
-    $(".R-lines , .K-lines , .M-lines ,  .N-lines ,.G-N").fadeToggle(1000);
-  });
-
-  jQuery(".N-circles").click(function () {
-    $(".R-circles , .K-circles , .M-circles ,  .G-circles").fadeToggle(1000);
-    $(".R-lines , .K-lines , .M-lines ,  .G-lines ").fadeToggle(1000);
+  jQuery(".all-cables").click(function () {
+    Truns_02("./Tubes.html");
   });
 
   // (Jont - page) >>> ;
   if (document.getElementById("Jont-page")) {
-    // link_Connection($(".cable-01-t01-sh04"), $(".cable-04-t12-sh12"));
+    // link_Connection($(".cable-04-t01-sh01"), $(".cable-06-t09-sh03"));
     // link_Connection($(".cable-01-t08-sh05"), $(".cable-04-t01-sh12"));
     // link_Connection($(".cable-04-t01-sh01"), $(".cable-07-t05-sh12"));
     // link_Connection($(".cable-07-t12-sh01"), $(".cable-03-t02-sh01"));
@@ -100,6 +76,92 @@ jQuery(document).ready(function () {
     jQuery("#work-tasks-btn").click(function () {
       window.location = "./Tasks.html";
     });
+    // ==================================================================================
+    // Add Connetion between Hairs in JontPage
+    $("#Btn-addConnection").bind("click", function (event) {
+      // Avoid the real one
+      event.preventDefault();
+
+      // Show contextmenu
+      $(".custom-menu-3")
+        .finish()
+        .toggle(100)
+        // In the right position (the mouse)
+        .css({
+          top: event.pageY + "px",
+          left: event.pageX + "px",
+        });
+    });
+
+    // If the document is clicked somewhere
+    $(document).bind("mousedown", function (e) {
+      // If the clicked element is not the menu
+      if (!$(e.target).parents(".custom-menu-3").length > 0) {
+        // Hide it
+        $(".custom-menu-3").hide(100);
+      }
+    });
+
+    // If the menu element is clicked
+    $(".custom-menu-3 li").click(function () {
+      // This is the triggered action name
+      switch ($(this).attr("data-action")) {
+        // A case for each action. Your actions here
+
+        case "fifth":
+          Swal.fire({
+            title: "يرجى تحديد اللنك الأول",
+            showCancelButton: true,
+            confirmButtonText: "OK",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              jQuery(".all-cables").off("click");
+              jQuery(".all-cables #hair").click(function (evt) {
+                console.log(
+                  "user clicked: ",
+                  evt.target.getAttribute("class", "id")
+                );
+
+                Swal.fire({
+                  // title: "تم تحديد المنطقة الأولى \n يرجى تحديد المنطقة الثانية ",
+                  title: "يرجى تحديد اللنك الثاني ",
+                  showCancelButton: true,
+                  confirmButtonText: "OK",
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    jQuery(".all-cables").off("click");
+                    jQuery(".all-cables #hair").click(function (evt) {
+                      console.log(
+                        "user clicked: ",
+                        evt.target.getAttribute("class", "id")
+                      );
+                      Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "تم  ",
+                        showConfirmButton: false,
+                        timer: 1500,
+                      });
+                      link_Connection(
+                        $(".cable-04-t01-sh01"),
+                        $(".cable-06-t09-sh03")
+                      );
+
+                      jQuery("#jont-svg").off("click");
+                    });
+                  }
+                });
+              });
+            }
+          });
+          break;
+      }
+
+      // Hide it AFTER the action was triggered
+      $(".custom-menu-3").hide(300);
+    });
+
+    // ==================================================================================
   }
 
   jQuery(
@@ -502,20 +564,24 @@ function link_Connection(p1, p2) {
     });
 }
 
+// ============================================================================
+
 function circles_Connection(c1, c2) {
   let x1 =
-    (document.querySelector(c1).getAttribute("cx") * 1) |
-    (document.querySelector(c1).getAttribute("x") * 1);
+    document.querySelector(c1).getAttribute("cx") * 1 ||
+    document.querySelector(c1).getAttribute("x") * 1;
   let y1 =
-    (document.querySelector(c1).getAttribute("cy") * 1) |
-    (document.querySelector(c1).getAttribute("y") * 1);
+    document.querySelector(c1).getAttribute("cy") * 1 ||
+    document.querySelector(c1).getAttribute("y") * 1;
 
   let x2 =
-    (document.querySelector(c2).getAttribute("cx") * 1) |
-    (document.querySelector(c2).getAttribute("x") * 1);
+    document.querySelector(c2).getAttribute("cx") * 1 ||
+    document.querySelector(c2).getAttribute("x") * 1;
   let y2 =
-    (document.querySelector(c2).getAttribute("y") * 1) |
-    (document.querySelector(c2).getAttribute("cy") * 1);
+    document.querySelector(c2).getAttribute("y") * 1 ||
+    document.querySelector(c2).getAttribute("cy") * 1;
+
+  // console.log(x1, y1, x2, y2);
 
   SVG(document.getElementById("cir-connetors"))
     .path()
@@ -533,12 +599,13 @@ function circles_Connection(c1, c2) {
 // ============================================================================
 // (mian - page) >>> ;
 if (document.getElementById("main-page")) {
-  circles_Connection(".c25", ".c26");
-  circles_Connection(".c25", ".c27");
-  circles_Connection(".c25", ".c28");
-  circles_Connection(".c25", ".c32");
-  circles_Connection(".NO-main-shape", ".W-main-shape");
-  circles_Connection(".NO-main-shape", ".c35");
+  // circles_Connection(".c25", ".c26");
+  // circles_Connection(".c25", ".c27");
+  // circles_Connection(".c25", ".c28");
+  // circles_Connection(".c25", ".c32");
+  // circles_Connection(".NO-main-shape", ".W-main-shape");
+  // circles_Connection(".NO-main-shape", ".c35");
+  circles_Connection(".c333", ".c444");
 }
 
 // ============================================================================
