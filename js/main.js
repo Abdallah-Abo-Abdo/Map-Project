@@ -25,7 +25,7 @@ window.Truns_02 = function (href) {
 
 // ================================================================================
 jQuery(document).ready(function () {
-  $(".all-lines").hide(1000);
+  // $(".all-lines").hide(1000);
   var scroll_zoom = new ScrollZoom($(".Zoom"), 20, 0.05);
 
   jQuery(".all-lines path").click(function () {
@@ -160,8 +160,6 @@ jQuery(document).ready(function () {
       // Hide it AFTER the action was triggered
       $(".custom-menu-3").hide(300);
     });
-
-    // ==================================================================================
   }
 
   jQuery(
@@ -172,6 +170,10 @@ jQuery(document).ready(function () {
 
   jQuery(".modal .CloseModal-btn  ").click(function () {
     $("#modalContactForm").modal("hide");
+  });
+
+  jQuery(".ShowPath-btn").click(function () {
+    window.location = "./V_Archiving.html";
   });
 
   // $(".New-circles").html('<circle cx="100" cy="50"/>');
@@ -516,11 +518,11 @@ function ScrollZoom(container, max_scale, factor) {
   if (document.getElementById("main-page")) {
     setInterval(() => {
       if (pos.x === 0 || pos.y === 0) {
-        $(".all-lines").hide(200);
+        // $(".all-lines").hide(200);
       }
 
       if (-pos.x >= 1300 && -pos.y >= 800) {
-        $(".all-lines").show(200);
+        // $(".all-lines").show(200);
       }
     }, 500);
   }
@@ -581,7 +583,40 @@ function circles_Connection(c1, c2) {
     document.querySelector(c2).getAttribute("y") * 1 ||
     document.querySelector(c2).getAttribute("cy") * 1;
 
-  // console.log(x1, y1, x2, y2);
+  SVG(document.getElementById("cir-connetors"))
+    .path()
+    .M({
+      x: x1,
+      y: y1,
+    })
+    .Q(
+      {
+        x: x1,
+        y: y2,
+      },
+      {
+        x: x2,
+        y: y2,
+      }
+    )
+    .attr("id", "newId")
+    .fill("none");
+}
+
+function circles_Connection_02(c1, c2) {
+  let x1 =
+    document.querySelector(c1).getAttribute("cx") * 1 ||
+    document.querySelector(c1).getAttribute("x") * 1;
+  let y1 =
+    document.querySelector(c1).getAttribute("cy") * 1 ||
+    document.querySelector(c1).getAttribute("y") * 1;
+
+  let x2 =
+    document.querySelector(c2).getAttribute("cx") * 1 ||
+    document.querySelector(c2).getAttribute("x") * 1;
+  let y2 =
+    document.querySelector(c2).getAttribute("y") * 1 ||
+    document.querySelector(c2).getAttribute("cy") * 1;
 
   SVG(document.getElementById("cir-connetors"))
     .path()
@@ -593,7 +628,8 @@ function circles_Connection(c1, c2) {
       x: x2,
       y: y2,
     })
-    .attr("id", "newId");
+    .attr("id", "newId")
+    .fill("none");
 }
 
 // ============================================================================
@@ -606,6 +642,8 @@ if (document.getElementById("main-page")) {
   // circles_Connection(".NO-main-shape", ".W-main-shape");
   // circles_Connection(".NO-main-shape", ".c35");
   circles_Connection(".c333", ".c444");
+  circles_Connection_02(".c333", ".c444");
+  // circles_Connection(".c333", ".c39");
 }
 
 // ============================================================================
